@@ -1,4 +1,5 @@
 Spaceship bob = new Spaceship();
+Asteroid [] meteor;
 Star [] stars;
 public void setup() 
 {
@@ -7,6 +8,11 @@ public void setup()
   for (int i = 0; i < stars.length; i++)
   {
   	stars[i] = new Star();
+  }
+  meteor = new Asteroid[20];
+  for (int i = 0; i < meteor.length; i++)
+  {
+    meteor[i] = new Asteroid();
   }
 }
 public void draw() 
@@ -18,13 +24,11 @@ public void draw()
   {
   	stars[i].show();
   }
-  fill(255);
-  textSize(20);
-  text("myCenterX "+bob.getX(),20,30);
-  text("myCenterY "+bob.getY(),20,50);
-  text("myPointDirection "+bob.getPointDirection(),20,70);
-  text("myDirectionX "+bob.getDirectionX(),20,90);
-  text("myDirectionY "+bob.getDirectionY(),20,110);
+  for(int i = 0; i < meteor.length; i++)
+  {
+    meteor[i].show();
+    meteor[i].move();
+  }
 }
 public void keyPressed()
 {
@@ -39,10 +43,3 @@ public void keyPressed()
 		bob.setPointDirection((int)(Math.random()*360));
 	}
 }
- /* When you are happy with appearance of the Spaceship, add a public void keyPressed() function in AsteroidsGame.pde
-Write code in keyPressed that allows you to control the spaceship with the keyboard. You must include the ability to turn left, turn right, accelerate, and enter "hyperspace." 
-Add code to the draw() in AsteroidsGame.pde to move() the Spaceship
-Finish the Star class in Star.pde
-Finally, add code to AsteroidsGame.pde that declares and initializes an array of instances of the Star class to create a number of stars in random positions
-Note that for full credit, you MUST include instructions on how to operate your Spaceship in the index.html file
-*/
